@@ -1,0 +1,6 @@
+# OS X Cruft
+.DS_Store
+
+# Compiled Python
+*.pyc
+*.egg

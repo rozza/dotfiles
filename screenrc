@@ -1,0 +1,43 @@
+# -*- mode: conf-space -*-
+
+# this is mostly from here: https://github.com/mikewest/homedir/blob/master/.screenrc
+
+### use local shell by default, and make it a login shell
+shell -$SHELL
+
+### New Messages
+
+activity    "%c activity in %n (%t) [%w:%s]~"
+bell        "%c bell -> %n%f %t^G"
+vbell_msg   " *beep* "
+
+### we're xterm-color
+termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+termcapinfo xterm-color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+termcapinfo xterm-256color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+term xterm-color
+
+### Generic Config
+
+vbell               on      # No annoying audible bell, using "visual bell"
+autodetach          on      # Automatically detach screens on hangup
+startup_message     off     # You know what screen is, right?
+defutf8             on      # Default to UTF-8
+nonblock            on      # Don't let hung windows bring down the whole session
+
+defscrollback       5000    # Biiiiig buffer.
+
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][ %{B}%Y-%m-%d %{W}%c %{g}]'
+
+### shortcuts
+bindkey -k F5 next
+bindkey -k F3 prev
+
+### I never background processes, so unblock ^A
+escape ^zZ
+
+### try and local local .screenrc for local mods
+source $HOME/.localscreenrc

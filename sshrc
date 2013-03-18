@@ -1,0 +1,7 @@
+#!/bin/bash
+if test "$SSH_AUTH_SOCK" ; then
+    OLD_FILE=`ls -t /tmp/ssh-*/agent.* | head -n 1`
+    if [ "$OLD_FILE" ]; then
+        ln -sf "$OLD_FILE" ~/.ssh/ssh_auth_sock
+    fi
+fi
