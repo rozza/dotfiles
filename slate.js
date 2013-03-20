@@ -32,11 +32,13 @@ var dellFull = S.op("move", {
 });
 var dellTop = dellFull.dup({ "height" : "screenSizeY/2" });
 var dellTopLeft = dellTop.dup({ "width" : "screenSizeX/2" });
-var dellTopMid = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
+var dellTopMid = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX*.17", "width":  "screenSizeX*.66" });
 var dellTopRight = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
+var dellMid = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8", "direction" : "top-left"});
+var dellMidL = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8", "direction" : "top-left"});
 var dellBottom = dellTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
 var dellBottomLeft = dellBottom.dup({ "width" : "screenSizeX/3" });
-var dellBottomMid = dellBottomLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
+var dellBottomMid = dellBottomLeft.dup({ "x" : "screenOriginX+screenSizeX*.12", "width":  "screenSizeX*.75", "y" : "screenOriginY+screenSizeY*.49" });
 var dellBottomRight = dellBottomLeft.dup({ "x" : "screenOriginX+2*screenSizeX/3" });
 var dellLeft = dellTopLeft.dup({ "height" : "screenSizeY" });
 var dellRight = dellTopRight.dup({ "height" : "screenSizeY" });
@@ -60,35 +62,29 @@ var dellTopHash = {
 var dellTopMidHash = {
   "operations" : [dellTopMid],
   "repeat" : true
-}
+};
+var dellMidHash = {
+  "operations" : [dellMid],
+  "repeat" : true
+};
+var dellMidLHash = {
+  "operations" : [dellMidL],
+  "repeat" : true
+};
 var iTermHash = {
-  "operations" : [dellBottomLeft, dellBottomMid, dellBottomRight, lapMain],
+  "operations" : [dellBottomMid, dellBottomLeft, dellBottomRight, lapMain],
   "sort-title" : true,
   "repeat-last" : true
 };
-var genBrowserHash = function(regex) {
-  return {
-    "operations" : [function(windowObject) {
-      var title = windowObject.title();
-      if (title !== undefined && title.match(regex)) {
-        windowObject.doOperation(hpRight);
-      } else {
-        windowObject.doOperation(lapMain);
-      }
-    }],
-    "ignore-fail" : true,
-    "repeat" : true
-  };
-}
 
 // 2 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : adiumHash,
   "iTerm" : iTermHash,
-  "Google Chrome" : lapMainHash,
-  "Firefox" : lapMainHash,
-  "Sublime" : dellTopMidHash,
+  "Google Chrome" : dellMidHash,
+  "Sublime Text 2" : dellMidLHash,
   "Safari" : lapMainHash,
+  "Firefox" : lapMainHash,
   "Spotify" : lapMainHash
 });
 
@@ -99,7 +95,7 @@ var oneMonitorLayout = S.lay("oneMonitor", {
   "Google Chrome" : lapMainHash,
   "Firefox" : lapMainHash,
   "Safari" : lapMainHash,
-  "Sublime" : lapMainHash,
+  "Sublime Text 2" : lapMainHash,
   "Spotify" : lapMainHash
 });
 
@@ -118,16 +114,13 @@ var universalLayout = function() {
     oneMonitor.run();
   }
 };
-slate.bind('h:ctrl;alt;cmd', slate.operation('layout', {'name': oneMonitorLayout}));
-slate.bind('r:ctrl;alt;cmd', slate.operation('relaunch'));
-
-slate.default([monLaptop], oneMonitorLayout);
 
 // Bindings
 // Batch bind everything. Less typing.
 S.bnda({
   // Layout Bindings
   "h:ctrl;alt;cmd" : universalLayout,
+  "r:ctrl;alt;cmd": S.op('relaunch'),
 
   // Resize Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
