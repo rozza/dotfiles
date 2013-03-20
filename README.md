@@ -31,6 +31,6 @@ I claim no credit but would like to thank Brad and those before him
 for the inspiration and code: 
 [Brad's `dotfiles`](https://github.com/bradleywright/dotfiles).
 
-Like Brad didn't fork [Norm's `homedir`](https://github.com/norm/homedir) I'm
-not forking his - he doesn't need or care about my dotfiles but if I do 
+Like Brad who didn't fork [Norm's `homedir`](https://github.com/norm/homedir) - 
+I'm not forking his - he doesn't need or care about my dotfiles but if I do 
 something good I'll pass it on via twitter.
