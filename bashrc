@@ -28,11 +28,11 @@ if [ -f $HOME/.functions ]; then
     source $HOME/.functions
 fi
 
-find_git
-find_brew
+# find_git
+# find_brew
 find_completion
 find_ruby
-find_subl
+# find_subl
 fix_path
 
 # local changes
