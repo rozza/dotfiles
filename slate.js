@@ -6,22 +6,36 @@
 
 // Slate configuration:
 // https://github.com/jigish/slate/wiki/JavaScript-Configs
-
-slate.config('defaultToCurrentScreen', true);
-slate.config('checkDefaultsOnLoad', true);
+S.cfga({
+  "defaultToCurrentScreen" : true,
+  "secondsBetweenRepeat" : 0.1,
+  "checkDefaultsOnLoad" : true,
+  "focusCheckWidthMax" : 3000
+});
 
 // Monitors
 var monLaptop = "1280x800";
 var monDell = "1920x1080";
 
 // Operations
-var lapChat = S.op("corner", {
+var lapContact = S.op("move", {
   "screen" : monLaptop,
-  "direction" : "top-right",
   "width" : "screenSizeX/9",
+  "y": "screenOriginY+screenSizeY*.1",
+  "x":  "screenOriginX",
+  "height": "screenSizeY*.8"
+});
+var lapChat = lapContact.dup({
+  "x":  "screenOriginX+screenSizeX/8",
+  "width" : "screenSizeX*.6"
+});
+var lapMain = S.op("move", {
+  "screen" : monLaptop,
+  "x" : "screenOriginX",
+  "y" : "screenOriginY",
+  "width" : "screenSizeX",
   "height" : "screenSizeY"
 });
-var lapMain = lapChat.dup({ "direction" : "top-left", "width" : "4*screenSizeX/9" });
 
 var dellFull = S.op("move", {
   "screen" : monDell,
@@ -34,8 +48,8 @@ var dellTop = dellFull.dup({ "height" : "screenSizeY/2" });
 var dellTopLeft = dellTop.dup({ "width" : "screenSizeX/2" });
 var dellTopMid = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX*.17", "width":  "screenSizeX*.66" });
 var dellTopRight = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
-var dellMid = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8", "direction" : "top-left"});
-var dellMidL = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8", "direction" : "top-left"});
+var dellMid = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8"});
+var dellMidL = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8"});
 var dellBottom = dellTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
 var dellBottomLeft = dellBottom.dup({ "width" : "screenSizeX/3" });
 var dellBottomMid = dellBottomLeft.dup({ "x" : "screenOriginX+screenSizeX*.12", "width":  "screenSizeX*.75", "y" : "screenOriginY+screenSizeY*.49" });
@@ -50,7 +64,7 @@ var lapMainHash = {
   "repeat" : true
 };
 var adiumHash = {
-  "operations" : [lapChat, lapMain],
+  "operations" : [lapContact, lapChat],
   "ignore-fail" : true,
   "title-order" : ["Contacts"],
   "repeat-last" : true
