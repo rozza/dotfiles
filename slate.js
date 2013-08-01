@@ -97,6 +97,8 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   "iTerm" : iTermHash,
   "Google Chrome" : dellMidHash,
   "Sublime Text 2" : dellMidLHash,
+  "Sublime Text" : dellMidLHash,
+  "IntelliJ IDEA" : dellMidLHash,
   "Safari" : lapMainHash,
   "Firefox" : lapMainHash,
   "Spotify" : lapMainHash

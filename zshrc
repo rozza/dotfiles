@@ -152,3 +152,6 @@ source_if_exists $HOME/.local_zshrc
 source_if_exists $HOME/.bash_aliases
 # My own aliases
 source_if_exists $HOME/.aliases
+
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
