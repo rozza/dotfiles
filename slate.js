@@ -112,6 +112,8 @@ var oneMonitorLayout = S.lay("oneMonitor", {
   "Firefox" : lapMainHash,
   "Safari" : lapMainHash,
   "Sublime Text 2" : lapMainHash,
+  "Sublime Text" : lapMainHash,
+  "IntelliJ" : lapMainHash,
   "Spotify" : lapMainHash
 });
 
