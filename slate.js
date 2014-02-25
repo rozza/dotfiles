@@ -15,7 +15,7 @@ S.cfga({
 
 // Monitors
 var monLaptop = "1280x800";
-var monDell = "1920x1080";
+var monBigScreen = "1920x1080";
 
 // Operations
 var lapContact = S.op("move", {
@@ -25,9 +25,10 @@ var lapContact = S.op("move", {
   "x":  "screenOriginX",
   "height": "screenSizeY*.8"
 });
+
 var lapChat = lapContact.dup({
   "x":  "screenOriginX+screenSizeX/8",
-  "width" : "screenSizeX*.6"
+  "width" : "screenSizeX*.8"
 });
 var lapMain = S.op("move", {
   "screen" : monLaptop,
@@ -37,25 +38,25 @@ var lapMain = S.op("move", {
   "height" : "screenSizeY"
 });
 
-var dellFull = S.op("move", {
-  "screen" : monDell,
+var bigScreenFull = S.op("move", {
+  "screen" : monBigScreen,
   "x" : "screenOriginX",
   "y" : "screenOriginY",
   "width" : "screenSizeX",
   "height" : "screenSizeY"
 });
-var dellTop = dellFull.dup({ "height" : "screenSizeY/2" });
-var dellTopLeft = dellTop.dup({ "width" : "screenSizeX/2" });
-var dellTopMid = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX*.17", "width":  "screenSizeX*.66" });
-var dellTopRight = dellTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
-var dellMid = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8"});
-var dellMidL = dellTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8"});
-var dellBottom = dellTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
-var dellBottomLeft = dellBottom.dup({ "width" : "screenSizeX/3" });
-var dellBottomMid = dellBottomLeft.dup({ "x" : "screenOriginX+screenSizeX*.12", "width":  "screenSizeX*.75", "y" : "screenOriginY+screenSizeY*.49" });
-var dellBottomRight = dellBottomLeft.dup({ "x" : "screenOriginX+2*screenSizeX/3" });
-var dellLeft = dellTopLeft.dup({ "height" : "screenSizeY" });
-var dellRight = dellTopRight.dup({ "height" : "screenSizeY" });
+var bigScreenTop = bigScreenFull.dup({ "height" : "screenSizeY/2" });
+var bigScreenTopLeft = bigScreenTop.dup({ "width" : "screenSizeX/2" });
+var bigScreenTopMid = bigScreenTopLeft.dup({ "x" : "screenOriginX+screenSizeX*.17", "width":  "screenSizeX*.66" });
+var bigScreenTopRight = bigScreenTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
+var bigScreenMid = bigScreenTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8"});
+var bigScreenMidL = bigScreenTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8"});
+var bigScreenBottom = bigScreenTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var bigScreenBottomLeft = bigScreenBottom.dup({ "width" : "screenSizeX/3" });
+var bigScreenBottomMid = bigScreenBottomLeft.dup({ "x" : "screenOriginX+screenSizeX*.12", "width":  "screenSizeX*.75", "y" : "screenOriginY+screenSizeY*.49" });
+var bigScreenBottomRight = bigScreenBottomLeft.dup({ "x" : "screenOriginX+2*screenSizeX/3" });
+var bigScreenLeft = bigScreenTopLeft.dup({ "height" : "screenSizeY" });
+var bigScreenRight = bigScreenTopRight.dup({ "height" : "screenSizeY" });
 
 // common layout hashes
 var lapMainHash = {
@@ -67,26 +68,27 @@ var adiumHash = {
   "operations" : [lapContact, lapChat],
   "ignore-fail" : true,
   "title-order" : ["Contacts"],
-  "repeat-last" : true
+  "repeat-last" : true,
+  "main-last": true
 };
-var dellTopHash = {
-  "operations" : [dellTop],
+var bigScreenTopHash = {
+  "operations" : [bigScreenTop],
   "repeat" : true
 };
-var dellTopMidHash = {
-  "operations" : [dellTopMid],
+var bigScreenTopMidHash = {
+  "operations" : [bigScreenTopMid],
   "repeat" : true
 };
-var dellMidHash = {
-  "operations" : [dellMid],
+var bigScreenMidHash = {
+  "operations" : [bigScreenMid],
   "repeat" : true
 };
-var dellMidLHash = {
-  "operations" : [dellMidL],
+var bigScreenMidLHash = {
+  "operations" : [bigScreenMidL],
   "repeat" : true
 };
 var iTermHash = {
-  "operations" : [dellBottomMid, dellBottomLeft, dellBottomRight, lapMain],
+  "operations" : [bigScreenBottomMid, bigScreenBottomLeft, bigScreenBottomRight, lapMain],
   "sort-title" : true,
   "repeat-last" : true
 };
@@ -95,10 +97,10 @@ var iTermHash = {
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : adiumHash,
   "iTerm" : iTermHash,
-  "Google Chrome" : dellMidHash,
-  "Sublime Text 2" : dellMidLHash,
-  "Sublime Text" : dellMidLHash,
-  "IntelliJ IDEA" : dellMidLHash,
+  "Google Chrome" : bigScreenMidHash,
+  "Sublime Text 2" : bigScreenMidLHash,
+  "Sublime Text" : bigScreenMidLHash,
+  "IntelliJ IDEA" : bigScreenMidLHash,
   "Safari" : lapMainHash,
   "Firefox" : lapMainHash,
   "Spotify" : lapMainHash
@@ -118,7 +120,7 @@ var oneMonitorLayout = S.lay("oneMonitor", {
 });
 
 // Defaults
-S.def([monLaptop, monDell], twoMonitorLayout);
+S.def([monLaptop, monBigScreen], twoMonitorLayout);
 S.def([monLaptop], oneMonitorLayout);
 
 // Layout Operations

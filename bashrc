@@ -125,3 +125,9 @@ export PATH
 if [ "$TMUX" ] && [ $TERM = "xterm-256color" ]; then
     export TERM="screen-256color"
 fi
+
+GOPATH="/Users/rozza/.gopath"
+
+
+# added by travis gem
+[ -f /Users/rozza/.travis/travis.sh ] && source /Users/rozza/.travis/travis.sh

@@ -155,3 +155,6 @@ source_if_exists $HOME/.aliases
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
+
+# added by travis gem
+[ -f /Users/rozza/.travis/travis.sh ] && source /Users/rozza/.travis/travis.sh
