@@ -158,3 +158,5 @@ source_if_exists $HOME/.aliases
 
 # added by travis gem
 [ -f /Users/rozza/.travis/travis.sh ] && source /Users/rozza/.travis/travis.sh
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

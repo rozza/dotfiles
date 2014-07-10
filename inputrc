@@ -9,10 +9,10 @@ set         show-all-if-ambiguous           on
 set         blink-matching-paren            on
 
 # search partial matches in history using [Esc]+[P], +[N] and arrow keys
-"\ep":      history-search-backward
-"\en":      history-search-forward
-"\e[A":     history-search-backward
-"\e[B":     history-search-forward
+# "\ep":      history-search-backward
+# "\en":      history-search-forward
+# "\e[A":     history-search-backward
+# "\e[B":     history-search-forward
 
 
 $if Bash

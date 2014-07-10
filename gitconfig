@@ -35,6 +35,7 @@
   st = status
   ci = commit
   br = branch
+  brd = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
   co = checkout
   df = diff
   dc = diff --cached
@@ -46,6 +47,10 @@
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
 
+  # Pull request aliases
+  pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1 && :
+  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
 [push]
     default = current
 
@@ -55,3 +60,6 @@ protocol = https
 
 [credential]
 helper = /opt/boxen/bin/boxen-git-credential
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

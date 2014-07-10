@@ -50,7 +50,8 @@ var bigScreenTopLeft = bigScreenTop.dup({ "width" : "screenSizeX/2" });
 var bigScreenTopMid = bigScreenTopLeft.dup({ "x" : "screenOriginX+screenSizeX*.17", "width":  "screenSizeX*.66" });
 var bigScreenTopRight = bigScreenTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
 var bigScreenMid = bigScreenTopMid.dup({"y": "screenOriginY+screenSizeY*.1", "height": "screenSizeY*.8"});
-var bigScreenMidL = bigScreenTopMid.dup({"y": "screenOriginY+screenSizeY*.06", "x": "screenOriginX+screenSizeX*.14", "height": "screenSizeY*.8"});
+var bigScreenMidL = bigScreenMid.dup({"x": "screenOriginX+screenSizeX*.14"});
+var bigScreenMidR = bigScreenMid.dup({"x": "screenOriginX+2*screenSizeX/3"});
 var bigScreenBottom = bigScreenTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
 var bigScreenBottomLeft = bigScreenBottom.dup({ "width" : "screenSizeX/3" });
 var bigScreenBottomMid = bigScreenBottomLeft.dup({ "x" : "screenOriginX+screenSizeX*.12", "width":  "screenSizeX*.75", "y" : "screenOriginY+screenSizeY*.49" });
@@ -84,8 +85,9 @@ var bigScreenMidHash = {
   "repeat" : true
 };
 var bigScreenMidLHash = {
-  "operations" : [bigScreenMidL],
-  "repeat" : true
+  "operations" : [bigScreenMidL, bigScreenMid, bigScreenMidR],
+  "repeat" : true,
+  "main-first": true
 };
 var iTermHash = {
   "operations" : [bigScreenBottomMid, bigScreenBottomLeft, bigScreenBottomRight, lapMain],
@@ -101,6 +103,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   "Sublime Text 2" : bigScreenMidLHash,
   "Sublime Text" : bigScreenMidLHash,
   "IntelliJ IDEA" : bigScreenMidLHash,
+  "IntelliJ IDEA 13" : bigScreenMidLHash,
   "Safari" : lapMainHash,
   "Firefox" : lapMainHash,
   "Spotify" : lapMainHash
