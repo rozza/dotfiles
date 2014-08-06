@@ -18,6 +18,7 @@ install_dotfiles:
 	@for f in $(FILES); do \
 		ln -sf $(SOURCE)/$$f $(TARGET)/.$$f; \
 	done
+	@ln -sf $(SOURCE)/oh-my-zsh $(TARGET)/.oh-my-zsh
 	@ln -sf $(SOURCE)/bin $(TARGET)/
 	@mkdir -p ~/.ssh/
 	@chmod 700 ~/.ssh/
@@ -27,6 +28,7 @@ clean_dotfiles:
 	@-for f in $(FILES); do \
 		unlink $(TARGET)/.$$f; \
 	done
+	@-unlink $(TARGET)/.oh-my-zsh
 	@-unlink $(TARGET)/.ssh/rc
 	@-unlink $(TARGET)/bin
 
