@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ross"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,32 +78,3 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Local overrides
-
-# Virtual Envs
-export WORKON_HOME=$HOME/.virtualenvs
-source_if_exists /usr/local/bin/virtualenvwrapper.sh
-
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/.gopath
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
-
-export SCALA_HOME=/usr/local/scala
-export PATH=$PATH:$SCALA_HOME/bin
-
-export GRADLE_HOME=/usr/local/gradle
-export PATH=$PATH:$GRADLE_HOME/bin
-
-# Aliases
-source_if_exists $HOME/.bash_aliases
-# My own aliases
-source_if_exists $HOME/.aliases
-
-source_if_exists /opt/boxen/env.sh
-
-# added by travis gem
-source_if_exists /Users/rozza/.travis/travis.sh
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
