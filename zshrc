@@ -107,3 +107,8 @@ source_if_exists /opt/boxen/env.sh
 source_if_exists /Users/rozza/.travis/travis.sh
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"

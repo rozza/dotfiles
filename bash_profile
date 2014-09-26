@@ -5,3 +5,6 @@
 
 if [ -r ~/.profile ]; then . ~/.profile; fi
 case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"

@@ -51,6 +51,9 @@
   pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1 && :
   pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 
+  # Delete merged branches
+  branch-clean = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
 [push]
     default = current
 

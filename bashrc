@@ -131,3 +131,6 @@ GOPATH="/Users/rozza/.gopath"
 
 # added by travis gem
 [ -f /Users/rozza/.travis/travis.sh ] && source /Users/rozza/.travis/travis.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"
