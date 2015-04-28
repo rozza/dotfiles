@@ -85,10 +85,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 source_if_exists /usr/local/bin/virtualenvwrapper.sh
 
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/.gopath
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=/Users/rozza/code/rozza/gopath
+export PATH=$PATH:/opt/boxen/homebrew/opt/go/libexec/bin
+
 
 export SCALA_HOME=/usr/local/scala
 export PATH=$PATH:$SCALA_HOME/bin
@@ -112,3 +111,6 @@ eval "$(jenv init -)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
