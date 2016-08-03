@@ -128,6 +128,7 @@ fi
 
 GOPATH="/Users/rozza/.gopath"
 
+SPARK_HOME="/Users/rozza/code/spark/spark-1.6.1"
 
 # added by travis gem
 [ -f /Users/rozza/.travis/travis.sh ] && source /Users/rozza/.travis/travis.sh
