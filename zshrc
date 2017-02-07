@@ -111,7 +111,7 @@ eval "$(jenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export SPARK_HOME="/Users/rozza/code/spark/spark-1.6.1"
+export SPARK_HOME="/Users/rozza/code/spark/spark-2.0.x"
 
 alias cr='python /Users/rozza/bin/upload.py \-s mongodbcr.appspot.com --oauth2'
 
