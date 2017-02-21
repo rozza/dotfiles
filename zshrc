@@ -86,8 +86,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 source_if_exists /usr/local/bin/virtualenvwrapper.sh
 
 export GOPATH=/Users/rozza/code/rozza/gopath
-export PATH=$PATH:/opt/boxen/homebrew/opt/go/libexec/bin
-
 
 export SCALA_HOME=/usr/local/scala
 export PATH=$PATH:$SCALA_HOME/bin
@@ -100,7 +98,9 @@ source_if_exists $HOME/.bash_aliases
 # My own aliases
 source_if_exists $HOME/.aliases
 
-source_if_exists /opt/boxen/env.sh
+# Boxen
+# export PATH=$PATH:/opt/boxen/homebrew/opt/go/libexec/bin
+# source_if_exists /opt/boxen/env.sh
 
 # added by travis gem
 source_if_exists /Users/rozza/.travis/travis.sh
