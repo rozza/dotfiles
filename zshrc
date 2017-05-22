@@ -103,17 +103,20 @@ source_if_exists $HOME/.aliases
 # source_if_exists /opt/boxen/env.sh
 
 # added by travis gem
-source_if_exists /Users/rozza/.travis/travis.sh
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 export SPARK_HOME="/Users/rozza/code/spark/spark-2.0.x"
 
 alias cr='python /Users/rozza/bin/upload.py \-s mongodbcr.appspot.com --oauth2'
 
+# Rust
+source_if_exists $HOME/.cargo/env
+export WELD_HOME="/Users/rozza/code/rust/weld"
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"
+# [[ -s "/Users/rozza/.gvm/bin/gvm-init.sh" ]] && source "/Users/rozza/.gvm/bin/gvm-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

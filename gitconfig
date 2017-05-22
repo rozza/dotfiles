@@ -54,6 +54,9 @@
   # Delete merged branches
   branch-clean = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
+  # Fixup previous commits  git fixup HEAD or git fixup HEAD~2
+  fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse ${1:-HEAD}) && git commit --fixup=$COMMIT && GIT_SEQUENCE_EDITOR=true  git rebase -i --autosquash $COMMIT~1' -"
+
 [push]
     default = current
 
