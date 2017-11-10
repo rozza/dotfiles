@@ -29,7 +29,7 @@
 [core]
     pager = less -FRSX
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    excludesfile = /opt/boxen/config/git/gitignore
+    excludesfile = ~/.gitignore
 
 [alias]
   st = status
@@ -65,7 +65,8 @@
 protocol = https
 
 [credential]
-	helper = osxkeychain
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
